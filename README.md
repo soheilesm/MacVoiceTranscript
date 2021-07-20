@@ -1,2 +1,2 @@
 # MacVoiceTranscript
-Get the transcript of speeches through your Mac
+Generate the transcript of your own speeches using your own Mac
