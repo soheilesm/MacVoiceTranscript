@@ -15,3 +15,5 @@ pip install SpeechRecognition
 pip install elasticsearch
 pip install pyaudio
 ```
+
+--> You can install all packages by running the bash file `install_packages.sh`.
