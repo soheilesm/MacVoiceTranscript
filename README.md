@@ -2,6 +2,7 @@
 Generate the transcript of your own speeches using your own Mac
 
 ---
+### Installation:
 On your Mac try installing `portaudio` and `elasticsearch` using `homebrew` through the below commands in the terminal:
 ```
 brew install portaudio
