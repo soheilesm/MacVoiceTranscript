@@ -1,4 +1,6 @@
 import speech_recognition as speech
+from datetime import datetime
+
 recognizer = speech.Recognizer()
 mic = speech.Microphone()
 
@@ -8,5 +10,6 @@ with mic as source:
     audio = recognizer.listen(source)
     transcript = recognizer.recognize_google(audio)
     print("The transcript of what you just sid is: ", transcript)
-    with open("./audio_file.wav", "wb") as file:
+    audio_filename = datetime.now().strftime("%Y%m%d-%H%M%S")
+    with open("./audio_" + audio_filename + ".wav", "wb") as file:
         file.write(audio.get_wav_data())
