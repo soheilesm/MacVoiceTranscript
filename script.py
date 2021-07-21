@@ -8,3 +8,5 @@ with mic as source:
     audio = recognizer.listen(source)
     transcript = recognizer.recognize_google(audio)
     print("The transcript of what you just sid is: ", transcript)
+    with open("./audio_file.wav", "wb") as file:
+        file.write(audio.get_wav_data())
