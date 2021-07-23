@@ -1,6 +1,8 @@
 import speech_recognition as speech
 from datetime import datetime
+import subprocess
 import os
+import pyttsx3
 
 
 def buffer():
@@ -33,6 +35,21 @@ def buffer2():
     d = '/Applications'
     apps = list(map(lambda x: x.split('.app')[0], os.listdir(d)))
     print(apps)
-
+    # open the first app in the list
     app = apps[0]
     os.system('open ' +d+'/%s.app' %app.replace(' ','\ '))
+
+
+# your Mac talks to you
+def say(text):
+    engine = pyttsx3.init()
+    engine.setProperty("rate", 200)
+    engine.setProperty('voice', 'com.apple.speech.synthesis.voice.samantha')
+    engine.say(text)
+    engine.runAndWait()
+    
+say("Hey! what can I do for you?")
+
+
+
+
