@@ -44,12 +44,15 @@ def buffer3():
     # your Mac talks to you
     def say(text):
         engine = pyttsx3.init()
+        # set the voice speed
         engine.setProperty("rate", 200)
+        # set the voice agent - e.g., samantha
         engine.setProperty('voice', 'com.apple.speech.synthesis.voice.samantha')
+        # read out the input 'text'
         engine.say(text)
         engine.runAndWait()
         
-    say("Hey! what can I do for you?")
+    say("Hey! What can I do for you?")
 
 
 
