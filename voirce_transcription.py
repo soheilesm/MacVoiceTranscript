@@ -40,15 +40,16 @@ def buffer2():
     os.system('open ' +d+'/%s.app' %app.replace(' ','\ '))
 
 
-# your Mac talks to you
-def say(text):
-    engine = pyttsx3.init()
-    engine.setProperty("rate", 200)
-    engine.setProperty('voice', 'com.apple.speech.synthesis.voice.samantha')
-    engine.say(text)
-    engine.runAndWait()
-    
-say("Hey! what can I do for you?")
+def buffer3():
+    # your Mac talks to you
+    def say(text):
+        engine = pyttsx3.init()
+        engine.setProperty("rate", 200)
+        engine.setProperty('voice', 'com.apple.speech.synthesis.voice.samantha')
+        engine.say(text)
+        engine.runAndWait()
+        
+    say("Hey! what can I do for you?")
 
 
 
