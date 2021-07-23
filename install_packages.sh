@@ -24,3 +24,8 @@ printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 echo "installing 'pyaudio' ..."
 echo "============================="
 pip install pyaudio
+
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+echo "installing 'espeak' ..."
+echo "============================="
+brew install espeak
