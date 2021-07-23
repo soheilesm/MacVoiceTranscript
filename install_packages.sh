@@ -29,3 +29,8 @@ printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
 echo "installing 'espeak' ..."
 echo "============================="
 brew install espeak
+
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+echo "installing 'pyttsx3' ..."
+echo "============================="
+pip install pyttsx3
