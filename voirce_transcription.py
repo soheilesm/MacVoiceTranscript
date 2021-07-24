@@ -87,11 +87,16 @@ def mac_voice_activattion(phrase='Hey there'):
 
 recognizer = speech.Recognizer()
 mic        = speech.Microphone()
-
+counter    = 0
 while True:
-    txt1 = "After 3 seconds, say the activation word <Hey there> to start ..."
-    print(txt1); Mac_say(txt1)
-    if mac_voice_activattion():
+    if counter == 0:
+        txt = "After 3 seconds, say the activation word <Hey there> to start ..."
+        counter += 1
+    else:
+        txt = "Is there any other application you want me to open? If so just say its name ..."
+        counter += 1
+    print(txt); Mac_say(txt)
+    if mac_voice_activattion() or counter > 1:
         try:
             txt2 = "Hey Soheil, what application do you want me to open for you? Also below is a list of your applications"
             print(txt2); Mac_say(txt2)
