@@ -5,7 +5,7 @@ import os
 import pyttsx3
 
 
-def buffer():
+def sample_speech_transcription_function():
     recognizer = speech.Recognizer()
     mic = speech.Microphone()
 
@@ -30,33 +30,32 @@ def buffer():
             file.write(audio.get_wav_data())
 
 
-def buffer2():
+def open_application(app_name):
     # get a list of application installed on your Mac
+
     d = '/Applications'
-    apps = list(map(lambda x: x.split('.app')[0], os.listdir(d)))
+    apps = list(map(lambda x: x.split('.app')[0].lower(), os.listdir(d)))
     print(apps)
     # open the first app in the list
-    app = apps[0]
+    app = app_name
     os.system('open ' +d+'/%s.app' %app.replace(' ','\ '))
 
 
-def buffer3():
+def Mac_say(text):
     # your Mac talks to you
-    def say(text):
-        engine = pyttsx3.init()
-        # set the voice speed
-        engine.setProperty("rate", 200)
-        # set the voice agent - e.g., samantha
-        engine.setProperty('voice', 'com.apple.speech.synthesis.voice.samantha')
-        # read out the input 'text'
-        engine.say(text)
-        engine.runAndWait()
-        
-    say("Hey! What can I do for you?")
 
+    engine = pyttsx3.init()
+    # set the voice speed
+    engine.setProperty("rate", 200)
+    # set the voice agent - e.g., samantha
+    engine.setProperty('voice', 'com.apple.speech.synthesis.voice.samantha')
+    # read out the input 'text'
+    engine.say(text)
+    engine.runAndWait()
+    
 
-
-def buffer4():
+def search_engine():
+    # TODO
     # build a search env for voice vs. system commands
     d = '/Applications'
     records = []
@@ -68,7 +67,7 @@ def buffer4():
         records.append(search)
 
 
-def mac_voice_activattion(phrase):
+def mac_voice_activattion(phrase='Hey there'):
     try:
         recognizer = speech.Recognizer()
         mic = speech.Microphone()
@@ -85,5 +84,33 @@ def mac_voice_activattion(phrase):
         pass
 
 
-print("say the activation word ...")
-mac_voice_activattion(phrase='Hey there')
+
+recognizer = speech.Recognizer()
+mic = speech.Microphone()
+
+while True:
+    print("say the activation word <Hey there> to start ...")
+    say("say the activation word <Hey there> to start ...")
+    if mac_voice_activattion():
+        try:
+            Mac_say("Hey Soheil, what application do you want me to open for you?")
+            with mic as source:
+                print("Say Something!")
+                # activate the microphone
+                recognizer.adjust_for_ambient_noise(source)
+                # record the audio
+                audio = recognizer.listen(source)
+                # get the transcription
+                transcript = recognizer.recognize_google(audio)
+                print(transcript)
+                open_application(transcript)
+                # sys_command = search(transcript)
+                # os.system(sys_command)
+                Mac_say("I opened the {} application for you".format(transcript))
+
+        except:
+            pass
+    else:
+        print("you didn't say the activation word ... Good bye!")
+        Mac_say("you didn't say the activation word ... Good bye!")
+        break
