@@ -1,5 +1,5 @@
 # MacVoiceTranscript
-Generate the transcript of your own speeches using your own Mac
+Generate the transcript of your own speeches using your own Mac and open applications
 
 ---
 ### Installation:
