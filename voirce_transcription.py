@@ -56,4 +56,14 @@ def buffer3():
 
 
 
+def buffer4():
+    # build a search env for voice vs. system commands
+    d = '/Applications'
+    records = []
+    apps = os.listdir(d)
+    for app in apps:
+        search = {}
+        search['voice_command'] = 'open ' + app.split('.app')[0]
+        search['sys_command'] = 'open ' + d +'/%s' %app.replace(' ','\ ')
+        records.append(search)
 
