@@ -86,14 +86,15 @@ def mac_voice_activattion(phrase='Hey there'):
 
 
 recognizer = speech.Recognizer()
-mic = speech.Microphone()
+mic        = speech.Microphone()
 
 while True:
-    print("say the activation word <Hey there> to start ...")
-    say("say the activation word <Hey there> to start ...")
+    txt1 = "After 3 seconds, say the activation word <Hey there> to start ..."
+    print(txt1); Mac_say(txt1)
     if mac_voice_activattion():
         try:
-            Mac_say("Hey Soheil, what application do you want me to open for you?")
+            txt2 = "Hey Soheil, what application do you want me to open for you? Also below is a list of your applications"
+            print(txt2); Mac_say(txt2)
             with mic as source:
                 print("Say Something!")
                 # activate the microphone
