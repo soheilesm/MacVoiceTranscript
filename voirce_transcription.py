@@ -68,14 +68,22 @@ def buffer4():
         records.append(search)
 
 
-def mac_voice_activattion(phrase='Hey Mac!'):
-    recognizer = speech.Recognizer()
-    mic = speech.Microphone()
-    with mic as source:
-        recognizer.adjust_for_ambient_noise(source)
-        audio = recognizer.listen(source)
-        transcript = recognizer.recognize_google(audio)
-        if transcript.lower() == phrase:
-            return True
-        else:
-            return False
+def mac_voice_activattion(phrase):
+    try:
+        recognizer = speech.Recognizer()
+        mic = speech.Microphone()
+        with mic as source:
+            recognizer.adjust_for_ambient_noise(source)
+            audio = recognizer.listen(source)
+            transcript = recognizer.recognize_google(audio)
+            print(transcript.lower())
+            if transcript.lower() == phrase.lower():
+                return True
+            else:
+                return False
+    except:
+        pass
+
+
+print("say the activation word ...")
+mac_voice_activattion(phrase='Hey there')
