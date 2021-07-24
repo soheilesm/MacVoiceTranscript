@@ -67,3 +67,15 @@ def buffer4():
         search['sys_command'] = 'open ' + d +'/%s' %app.replace(' ','\ ')
         records.append(search)
 
+
+def mac_voice_activattion(phrase='Hey Mac!'):
+    recognizer = speech.Recognizer()
+    mic = speech.Microphone()
+    with mic as source:
+        recognizer.adjust_for_ambient_noise(source)
+        audio = recognizer.listen(source)
+        transcript = recognizer.recognize_google(audio)
+        if transcript.lower() == phrase:
+            return True
+        else:
+            return False
